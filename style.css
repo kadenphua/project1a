@@ -1,0 +1,24 @@
+.center {
+  margin: 5% auto;
+  padding: 30px;
+  border: 1px dotted black
+}
+
+header {
+  text-align: center;
+}
+
+#instructions {
+  text-align: center;
+}
+
+button {
+    text-align: center;
+    margin-top; 20px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: red;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
