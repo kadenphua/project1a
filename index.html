@@ -6,24 +6,26 @@
     <link rel="stylesheet" href="style.css" media="screen" title="no title">
   </head>
   <body>
-    <section class="content container-fluid" id="quiz">
-  <header>
-    <div class="center">
-      <h1> Math Quiz</h1>
-    </div>
-  </header>
+    <section>
+        <h1> Math Quiz</h1>
 
-  <section id="instuctions" class="center">
-    <h2> Test your math general knowledge </h2>
-  </section>
+        <h2> Test your math general knowledge </h2>
 
-    <button class="btn btn-primary" id="next">Next</button>
-    <button class="btn btn-info" id="prev">Prev</button>
-    <button class="btn btn-default" id="start">Start Over</button>
+        <h3 id="question"></h3>
 
- </section>
+        <form>
+          <input type="radio" name="answer" value="0" id="ans0"> <span id="choice0"></span> </input>
+          <input type="radio" name="answer" value="1" id="ans1"> <span id="choice1"></span> </input>
+          <input type="radio" name="answer" value="2" id="ans2"> <span id="choice2"></span> </input>
+          <input type="radio" name="answer" value="3" id="ans3"> <span id="choice3"></span> </input>
+          <br>
+        </form>
+        <input type="button" name="next" value="Next Question" id="next" />
+        <input type="button" name="restart" value="Restart" id="restart" />
+    </section>
 
      <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+     <script src="script.js" charset="utf-8"></script>
      </div>
   </body>
 </html>

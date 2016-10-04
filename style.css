@@ -1,0 +1,16 @@
+body {
+  text-align: center;;
+  background: url(http://previews.123rf.com/images/Suljo/Suljo0903/suljo090300013/4567751-Vector-illustration-of-seamless-math-background-Stock-Vector-algebra.jpg);
+}
+
+section {
+  background-color: white;
+}
+
+h3 {
+  border: 1px dashed black;
+}
+
+span {
+  padding-right: 20px;
+}
