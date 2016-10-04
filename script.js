@@ -65,44 +65,25 @@ allQns[0] = {
 };
 
 function beginQuiz () {
+  var qnsId = document.getElementById("qnsId")
   var question = document.getElementById("question");
-  question.textContent = allQns[0].question;
-
   var choice0 = document.getElementById("choice0");
+  var choice1 = document.getElementById("choice1");
+  var choice2 = document.getElementById("choice2");
+  var choice3 = document.getElementById("choice3");
+
+  qnsId.textContent = "Question " + number;
+  question.textContent = allQns[0].question;
   choice0.textContent = allQns[0].choices[0];
-
-  var choice0 = document.getElementById("choice1");
-  choice0.textContent = allQns[0].choices[1];
-
-  var choice0 = document.getElementById("choice2");
-  choice0.textContent = allQns[0].choices[2];
-
-  var choice0 = document.getElementById("choice3");
-  choice0.textContent = allQns[0].choices[3];
-
+  choice1.textContent = allQns[0].choices[1];
+  choice2.textContent = allQns[0].choices[2];
+  choice3.textContent = allQns[0].choices[3];
 }
 
-// Create a variable to store the user's score
 var userScore = 0;
-
-// Create a variable to store the index of the current question
+var number = 1;
 var qnNumber = 0;
 
-// $("#restart").click(function(){
-//
-//   document.getElementById("question").textContent = allQns[0].question;
-//
-//   document.getElementById("choice0").textContent = allQns[0].choices[0];
-//
-//   document.getElementById("choice1").textContent = allQns[0].choices[1];
-//
-//   document.getElementById("choice2").textContent = allQns[0].choices[2];
-//
-//   document.getElementById("choice3").textContent = allQns[0].choices[3];
-//
-// });
-
-// When the NEXT button is clicked, the user's score is updated, the current question is hidden, and the next question is revealed.
 $("#next").click(function() {
 
   // Check User's answers
@@ -122,8 +103,10 @@ $("#next").click(function() {
 
   // Current question is not the last question, so increment the current question index
     qnNumber++;
+    number++;
 
   // Replace current question with next question
+    qnsId.textContent = "Question " + number;
     question.textContent = allQns[qnNumber].question;
     choice0.textContent = allQns[qnNumber].choices[0];
     choice1.textContent = allQns[qnNumber].choices[1];
@@ -131,15 +114,3 @@ $("#next").click(function() {
     choice3.textContent = allQns[qnNumber].choices[3];
 
 	});
-
-  // function restart () {
-  //   document.getElementById("question").textContent = allQns[0].question;
-  //
-  //   document.getElementById("choice0").textContent = allQns[0].choices[0];
-  //
-  //   document.getElementById("choice1").textContent = allQns[0].choices[1];
-  //
-  //   document.getElementById("choice2").textContent = allQns[0].choices[2];
-  //
-  //   document.getElementById("choice3").textContent = allQns[0].choices[3];
-  // }
