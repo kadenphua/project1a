@@ -7,10 +7,15 @@
   </head>
   <body>
     <section>
+      <div id="welcome">
         <h1> Math Quiz</h1>
 
         <h2> Test your math general knowledge </h2>
 
+        <input type="button" name="start" value="Start" id="start" />
+      </div>
+
+      <div id = 'quiz'>
         <h3 id="qnsId"></h3>
 
         <h3 id="question"></h3>
@@ -21,8 +26,10 @@
           <input type="radio" name="answer" value="2" id="ans2"> <span id="choice2"></span> </input>
           <input type="radio" name="answer" value="3" id="ans3"> <span id="choice3"></span> </input>
           <br>
+          <input type="button" name="next" value="Next Question" id="next" />
         </form>
-        <input type="button" name="next" value="Next Question" id="next" />
+      </div>
+
         <!-- <input type="button" name="restart" value="Restart" id="restart" /> -->
     </section>
 
