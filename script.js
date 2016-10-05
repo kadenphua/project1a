@@ -1,17 +1,20 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var userScore = 0
   // var currentQuestion = 1
   var qnNumber = 0
-  var qnsId = document.getElementById("qnsId")
-  var question = document.getElementById("question")
-  var choice0 = document.getElementById("choice0")
-  var choice1 = document.getElementById("choice1")
-  var choice2 = document.getElementById("choice2")
-  var choice3 = document.getElementById("choice3")
-  var form = document.getElementsByName("answer")
-  var quiz = document.getElementById("quiz")
+  var qnsId = document.getElementById('qnsId')
+  var question = document.getElementById('question')
+  var choice0 = document.getElementById('choice0')
+  var choice1 = document.getElementById('choice1')
+  var choice2 = document.getElementById('choice2')
+  var choice3 = document.getElementById('choice3')
+  var form = document.getElementsByName('answer')
+  var quiz = document.getElementById('quiz')
   var i = 0
-    // Create an array to store all questions.
+  var score1 = 0
+  var score2 = 0
+
+  // Create an array to store all questions.
   var allQns = [
     // Store each question in an object.
     // allQns[0] =
@@ -74,118 +77,138 @@ $(document).ready(function() {
       choices: ['4', '6', '5', '-5'],
       answer: 2
     },
-    // allQns[10] =
-    // {
-    //   question: 'Which formula determines the center of a circle in the x, y coordinate system?',
-    //   choices: ['X+Y', 'X^2 + Y^2', 'Sqrt(X) + Sqrt(Y)', 'X*Y'],
-    //   answer: 1
-    // },
-    // // allQns[11] =
-    // {
-    //   question: 'If a right triangle has a hypotenuse of 13 ft, which combination could be the lengths of the legs?',
-    //   choices: ['8 Ft And 5 Ft', '5 Ft And 12 Ft', '6 Ft And 7 Ft', '8 Ft And 9 Ft'],
-    //   answer: 1
-    // }
+  // allQns[10] =
+  // {
+  //   question: 'Which formula determines the center of a circle in the x, y coordinate system?',
+  //   choices: ['X+Y', 'X^2 + Y^2', 'Sqrt(X) + Sqrt(Y)', 'X*Y'],
+  //   answer: 1
+  // },
+  // // allQns[11] =
+  // {
+  //   question: 'If a right triangle has a hypotenuse of 13 ft, which combination could be the lengths of the legs?',
+  //   choices: ['8 Ft And 5 Ft', '5 Ft And 12 Ft', '6 Ft And 7 Ft', '8 Ft And 9 Ft'],
+  //   answer: 1
+  // }
   ]
 
-  $('#start').click(function() {
+  $('#start').click(function () {
     $('#quiz').show()
     $('#welcome').hide()
     display()
-    // qnNumber++
-    // currentQuestion++
+  // qnNumber++
+  // currentQuestion++
   })
 
-  $('#next').click(function() {
-    console.log("question: " + qnNumber);
-      if (qnNumber < 9) {
-        // if ($("form input[name=answer]:checked").val() == allQns[i].answer) {
-        if ($("form input[name=answer]:checked").val() == 0) {
-
-          console.log("correct");
-          userScore++
-          console.log(userScore);
+  $('#next').click(function () {
+    console.log('question: ' + qnNumber)
+    if (qnNumber < 9) {
+      // if ($("form input[name=answer]:checked").val() == allQns[i].answer) {
+      // console.log('val is ', $('form input[name=answer]:checked').val(), qnNumber)
+      if (parseInt($('form input[name=answer]:checked').val()) === 0) {
+        console.log("check");
+        if (qnNumber % 2 === 0) {
+          score1++
+        } else {
+          score2++
         }
-        qnNumber++
-        // currentQuestion++
-        allQns.splice(i, 1)
-        deselectRadios()
-        display()
-        console.log("#next")
-      }
-      // console.log(allQns);
-      // isGameOver()
-      // Check User's answers
-      else {
-        // if ($("form input[name=answer]:checked").val() == allQns[i].answer) {
-        if ($("form input[name=answer]:checked").val() == 0) {
-          userScore++
-        }
-        qnsId.style.display = "none";
-        question.style.display = "none";
-        form[0].style.display = "none";
-        next.style.display = "none";
-
-        alert("Your score is " + userScore + " out of 10.");
-        location.reload();
-        // $('#quiz').hide()
-        // $('#welcome').show()
-        // deselectRadios()
-      }
-  })
-// If last question, show user's score rather than next question
-// function isGameOver() {
-//   var form = document.getElementsByTagName("form");
-//   var next = document.getElementById("next");
-//
-//   if (qnNumber == (10)) {
-//     qnsId.style.display = "none";
-//     question.style.display = "none";
-//     form[0].style.display = "none";
-//     next.style.display = "none";
-//
-//     alert("Your score is " + userScore + " out of 10.");
-//
-//   }
-// }
-
-// function restart() {
-//   beginQuiz();
-// }
-
-function display() {
-  if (qnNumber < 10) {
-    i = Math.floor(Math.random() * allQns.length)
-    // qnsId.textContent = "Question " + currentQuestion;
-    qnsId.textContent = "Question " + (qnNumber+1);
-    question.textContent = allQns[i].question;
-    question.innerHTML = allQns[i].question
-
-    for (var j = 0; j < 4; j++) {
-      choice0.textContent = allQns[i].choices[0];
-      choice1.textContent = allQns[i].choices[1];
-      choice2.textContent = allQns[i].choices[2];
-      choice3.textContent = allQns[i].choices[3];
+        // console.log("correct")
+      // console.log(userScore)
     }
-  }
+    console.log(score1, score2);
+
+      qnNumber++
+      // currentQuestion++
+      allQns.splice(i, 1)
+      deselectRadios()
+      display()
+    // console.log("#next")
+    }
+    // console.log(allQns)
+    // isGameOver()
+    // Check User's answers
+    else {
+      if(parseInt($('form input[name=answer]:checked').val()) === 0) {
+        if (qnNumber % 2 === 0) {
+          score1++
+        } else {
+          score2++
+        }
+        // console.log("correct")
+      // console.log(userScore)
+    }
+      qnsId.style.display = 'none'
+      question.style.display = 'none'
+      form[0].style.display = 'none'
+      next.style.display = 'none'
+
+      alert('Player 1 score is ' + score1 + ' out of 5.' + 'and ' + 'Player 2 score is ' + score2 + ' out of 5.')
+      if (score1 > score2) {
+        alert('Player 1 is the winner.')
+      } else if (score1 < score2) {
+        alert('Player 2 is the winner.')
+      } else {
+        alert('It is a tie.')
+      }
+      location.reload()
+    // $('#quiz').hide()
+    // $('#welcome').show()
+    // deselectRadios()
+    }
+  })
+  // If last question, show user's score rather than next question
+  // function isGameOver() {
+  //   var form = document.getElementsByTagName("form")
+  //   var next = document.getElementById("next")
+  //
+  //   if (qnNumber == (10)) {
+  //     qnsId.style.display = "none"
+  //     question.style.display = "none"
+  //     form[0].style.display = "none"
+  //     next.style.display = "none"
+  //
+  //     alert("Your score is " + userScore + " out of 10.")
+  //
+  //   }
+  // }
+
+  // function restart() {
+  //   beginQuiz()
+  // }
+
+  function display () {
+    if (qnNumber < 10) {
+      i = Math.floor(Math.random() * allQns.length)
+      // qnsId.textContent = "Question " + currentQuestion
+      qnsId.textContent = (qnNumber + 1)
+      question.textContent = allQns[i].question
+      question.innerHTML = allQns[i].question
+
+      for (var j = 0; j < 4; j++) {
+        choice0.textContent = allQns[i].choices[0]
+        choice1.textContent = allQns[i].choices[1]
+        choice2.textContent = allQns[i].choices[2]
+        choice3.textContent = allQns[i].choices[3]
+      }
+    }
   // else {
   //   //hide the quiz
   //   //restart button
   //   //tabulate score
-  //     qnsId.style.display = "none";
-  //     question.style.display = "none";
-  //     form[0].style.display = "none";
-  //     next.style.display = "none";
-  //     alert("Your score is " + userScore + " out of 10.");
+  //     qnsId.style.display = "none"
+  //     question.style.display = "none"
+  //     form[0].style.display = "none"
+  //     next.style.display = "none"
+  //     alert("Your score is " + userScore + " out of 10.")
   //   }
-}
-
-function deselectRadios() {
-  allRadios = document.getElementsByName('answer');
-  for (var p = 0; p < allRadios.length; p++) {
-    allRadios[p].checked = false;
   }
-}
+
+  function deselectRadios () {
+    allRadios = document.getElementsByName('answer')
+    for (var p = 0; p < allRadios.length; p++) {
+      allRadios[p].checked = false
+    }
+  }
+
 //
 // restart.addEventListener("click", function() {
 //   $('#quiz').hide()
