@@ -20,7 +20,11 @@ span {
 }
 
 #next {
-  margin-bottom: 20px 0 20px 0;
+  margin: 20px 0 20px 0;
+}
+
+#restart {
+  margin: 20px 0 20px 0;
 }
 
 #quiz {
