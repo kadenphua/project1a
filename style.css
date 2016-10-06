@@ -12,11 +12,12 @@ section {
   opacity: 0.9;
 }
 
-h1{
+h1 {
   font-size: 40px;
-
 }
+
 h3 {
+  margin-top: 25px;
   margin-bottom: 25px;
   clear: both;
 }
@@ -28,11 +29,13 @@ span {
 #p1Score {
   position: relative;
   float: left;
+  margin-left: 10px;
 }
 
 #p2Score {
   position: relative;
   float: right;
+  margin-right: 10px;
 }
 
 #start {
