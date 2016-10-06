@@ -1,5 +1,9 @@
 $(document).ready(function () {
   var qnNumber = 0
+  var i = 0
+  var score1 = 0
+  var score2 = 0
+  var player = 0
   var qnsId = document.getElementById('qnsId')
   var question = document.getElementById('question')
   var choice0 = document.getElementById('choice0')
@@ -8,11 +12,8 @@ $(document).ready(function () {
   var choice3 = document.getElementById('choice3')
   var form = document.getElementsByName('answer')
   var quiz = document.getElementById('quiz')
-  var i = 0
-  var score1 = 0
-  var score2 = 0
-  var player = 0
-
+  var p1Score = document.getElementById('p1Score')
+  var p2Score = document.getElementById('p2Score')
   // Create an array to store all questions.
   var allQns = [
     {
@@ -31,12 +32,12 @@ $(document).ready(function () {
       answer: 2
     },
     {
-      question: '-5 x 5 =',
+      question: '-5 x 5 = ?',
       choices: ['25', '20', '-25', '-20'],
       answer: 2
     },
     {
-      question: '12 x 12 =',
+      question: '12 x 12 = ?',
       choices: ['12', '108', '240', '144'],
       answer: 3
     },
@@ -56,7 +57,7 @@ $(document).ready(function () {
       answer: 2
     },
     {
-      question: '11^0',
+      question: '11^0 = ?',
       choices: ['1', '11', '121', '12'],
       answer: 0
     },
@@ -64,7 +65,7 @@ $(document).ready(function () {
       question: 'What is the value of x if x(-3) + 6 = -9 ?',
       choices: ['4', '6', '5', '-5'],
       answer: 2
-    },
+    }
   ]
 
   $('#start').click(function () {
@@ -72,34 +73,21 @@ $(document).ready(function () {
     $('#welcome').hide()
     display()
     showPlayer()
+    updateScore()
   })
 
   $('#next').click(function () {
     if (qnNumber < 9) {
-      // if ($("form input[name=answer]:checked").val() == allQns[i].answer) {
-      // Use parseInt to convert string into integer when using ===
-      if (parseInt($('form input[name=answer]:checked').val()) === allQns[i].answer) {
-        console.log("check");
-        if (qnNumber % 2 === 0) {
-          score1++
-        } else {
-          score2++
-        }
-    }
+      scoreFormula()
       qnNumber++
       allQns.splice(i, 1)
       deselectRadios()
       display()
       showPlayer()
+      updateScore()
     }
     else {
-      if(parseInt($('form input[name=answer]:checked').val()) === allQns[i].answer) {
-        if (qnNumber % 2 === 0) {
-          score1++
-        } else {
-          score2++
-        }
-    }
+      scoreFormula()
       qnsId.style.display = 'none'
       question.style.display = 'none'
       form[0].style.display = 'none'
@@ -132,6 +120,18 @@ $(document).ready(function () {
     }
   }
 
+  // if ($("form input[name=answer]:checked").val() == allQns[i].answer) {
+  // Use parseInt to convert string into integer when using ===
+  function scoreFormula() {
+    if (parseInt($('form input[name=answer]:checked').val()) === allQns[i].answer) {
+      if (qnNumber % 2 === 0) {
+        score1++
+      } else {
+        score2++
+      }
+    }
+  }
+
   function deselectRadios () {
     allRadios = document.getElementsByName('answer')
     for (var p = 0; p < allRadios.length; p++) {
@@ -139,12 +139,16 @@ $(document).ready(function () {
     }
   }
 
-  function showPlayer(){
+  function showPlayer() {
     if (qnNumber % 2 === 0) {
-      (player = 'Player 1 Turn')
+      (player = 'Player 1 Turn: ')
     } else {
-      (player = 'Player 2 Turn')
+      (player = 'Player 2 Turn: ')
     }
     qnsId.textContent = player
+  }
+  function updateScore() {
+    p1Score.textContent = ('Player 1 Score: ' + score1)
+    p2Score.textContent = ('Player 2 Score: ' + score2)
   }
 })

@@ -13,22 +13,34 @@
         <h2> Test your math general knowledge </h2>
         <h3>There are 10 questions in total and each player will answer 5 questions </h3>
 
+
         <input type="button" name="start" value="Start" id="start" />
       </div>
 
       <div id = 'quiz'>
+        <h4 id="p1Score">test</h4>
+        <h4 id="p2Score">test</h4>
         <h3 id="qnsId"></h3>
 
         <h3 id="question"></h3>
 
         <form>
-          <input type="radio" name="answer" value="0" id="ans0"> <span id="choice0"></span> </input>
-          <input type="radio" name="answer" value="1" id="ans1"> <span id="choice1"></span> </input>
-          <input type="radio" name="answer" value="2" id="ans2"> <span id="choice2"></span> </input>
-          <input type="radio" name="answer" value="3" id="ans3"> <span id="choice3"></span> </input>
+          <label id=ans0>
+            <input type="radio" name="answer" value="0" id="ans0"> <span id="choice0"></span> </input>
+          </label>
+          <label id=ans1>
+            <input type="radio" name="answer" value="1" id="ans1"> <span id="choice1"></span> </input>
+          </label>
+          <label id=ans2>
+            <input type="radio" name="answer" value="2" id="ans2"> <span id="choice2"></span> </input>
+          </label>
+          <label id=ans3>
+            <input type="radio" name="answer" value="3" id="ans3"> <span id="choice3"></span> </input>
+          </label>
           <br>
           <input type="button" name="next" value="Next Question" id="next" />
         </form>
+
       </div>
 
     </section>
