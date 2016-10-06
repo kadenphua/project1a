@@ -5,6 +5,10 @@ body {
 
 section {
   background-color: white;
+  width: 75%;
+  position: relative;
+  margin-left: 10%;
+  margin-top: 10%;
 }
 
 h3 {
