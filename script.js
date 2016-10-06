@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  var userScore = 0
-  // var currentQuestion = 1
   var qnNumber = 0
   var qnsId = document.getElementById('qnsId')
   var question = document.getElementById('question')
@@ -13,38 +11,39 @@ $(document).ready(function () {
   var i = 0
   var score1 = 0
   var score2 = 0
+  var player = 0
 
   // Create an array to store all questions.
   var allQns = [
     // Store each question in an object.
     // allQns[0] =
     {
-      question: 'How many leap years will there be between 2000 and 2050?',
-      choices: ['11', '15', '13', '12'],
-      answer: 2
+      question: '1+1 = ?',
+      choices: ['11', '2', '4', '0.1'],
+      answer: 1
     },
     // allQns[1] =
     {
-      question: 'What are the odds of rolling a dice and having it come up as a six three times in a row?',
-      choices: ['1/216', '1/6', '1/36', '1/256'],
-      answer: 0
+      question: '10^2 = ?',
+      choices: ['10', '1000', '1', '100'],
+      answer: 3
     },
     // allQns[2] =
     {
-      question: 'What are the odds of rolling two six-sided dice and getting two sixes?',
-      choices: ['1/216', '1/18', '1/36', '1/6'],
+      question: '6 x 3 = ?',
+      choices: ['2', '12', '18', '24'],
       answer: 2
     },
     // allQns[3] =
     {
-      question: 'What are the odds of rolling two 6-sided dice to the same number (getting doubles)?',
-      choices: ['1/216', '1/36', '1/6', '1/3'],
+      question: '-5 x 5 =',
+      choices: ['25', '20', '-25', '-20'],
       answer: 2
     },
     // allQns[4] =
     {
-      question: 'If a library is 46% historical books and 24% fiction, with 105 others, how many books are fiction?',
-      choices: ['36', '108', '240', '84'],
+      question: '12 x 12 =',
+      choices: ['12', '108', '240', '144'],
       answer: 3
     },
     // allQns[5] =
@@ -67,8 +66,8 @@ $(document).ready(function () {
     },
     // allQns[8] =
     {
-      question: 'There are 8 people. Each person shakes hand with every other person. How many handshakes were there?',
-      choices: ['28', '56', '32', '64'],
+      question: '11^0',
+      choices: ['1', '11', '121', '12'],
       answer: 0
     },
     // allQns[9] =
@@ -77,33 +76,20 @@ $(document).ready(function () {
       choices: ['4', '6', '5', '-5'],
       answer: 2
     },
-  // allQns[10] =
-  // {
-  //   question: 'Which formula determines the center of a circle in the x, y coordinate system?',
-  //   choices: ['X+Y', 'X^2 + Y^2', 'Sqrt(X) + Sqrt(Y)', 'X*Y'],
-  //   answer: 1
-  // },
-  // // allQns[11] =
-  // {
-  //   question: 'If a right triangle has a hypotenuse of 13 ft, which combination could be the lengths of the legs?',
-  //   choices: ['8 Ft And 5 Ft', '5 Ft And 12 Ft', '6 Ft And 7 Ft', '8 Ft And 9 Ft'],
-  //   answer: 1
-  // }
   ]
 
   $('#start').click(function () {
     $('#quiz').show()
     $('#welcome').hide()
     display()
-  // qnNumber++
-  // currentQuestion++
+    showPlayer()
   })
 
   $('#next').click(function () {
-    console.log('question: ' + qnNumber)
     if (qnNumber < 9) {
       // if ($("form input[name=answer]:checked").val() == allQns[i].answer) {
       // console.log('val is ', $('form input[name=answer]:checked').val(), qnNumber)
+      // Use parseInt to convert string into integer when using ===
       if (parseInt($('form input[name=answer]:checked').val()) === 0) {
         console.log("check");
         if (qnNumber % 2 === 0) {
@@ -114,18 +100,13 @@ $(document).ready(function () {
         // console.log("correct")
       // console.log(userScore)
     }
-    console.log(score1, score2);
-
+    // console.log(score1, score2);
       qnNumber++
-      // currentQuestion++
       allQns.splice(i, 1)
       deselectRadios()
       display()
-    // console.log("#next")
+      showPlayer()
     }
-    // console.log(allQns)
-    // isGameOver()
-    // Check User's answers
     else {
       if(parseInt($('form input[name=answer]:checked').val()) === 0) {
         if (qnNumber % 2 === 0) {
@@ -150,36 +131,12 @@ $(document).ready(function () {
         alert('It is a tie.')
       }
       location.reload()
-    // $('#quiz').hide()
-    // $('#welcome').show()
-    // deselectRadios()
     }
   })
-  // If last question, show user's score rather than next question
-  // function isGameOver() {
-  //   var form = document.getElementsByTagName("form")
-  //   var next = document.getElementById("next")
-  //
-  //   if (qnNumber == (10)) {
-  //     qnsId.style.display = "none"
-  //     question.style.display = "none"
-  //     form[0].style.display = "none"
-  //     next.style.display = "none"
-  //
-  //     alert("Your score is " + userScore + " out of 10.")
-  //
-  //   }
-  // }
-
-  // function restart() {
-  //   beginQuiz()
-  // }
 
   function display () {
     if (qnNumber < 10) {
       i = Math.floor(Math.random() * allQns.length)
-      // qnsId.textContent = "Question " + currentQuestion
-      qnsId.textContent = (qnNumber + 1)
       question.textContent = allQns[i].question
       question.innerHTML = allQns[i].question
 
@@ -190,16 +147,6 @@ $(document).ready(function () {
         choice3.textContent = allQns[i].choices[3]
       }
     }
-  // else {
-  //   //hide the quiz
-  //   //restart button
-  //   //tabulate score
-  //     qnsId.style.display = "none"
-  //     question.style.display = "none"
-  //     form[0].style.display = "none"
-  //     next.style.display = "none"
-  //     alert("Your score is " + userScore + " out of 10.")
-  //   }
   }
 
   function deselectRadios () {
@@ -209,14 +156,12 @@ $(document).ready(function () {
     }
   }
 
-//
-// restart.addEventListener("click", function() {
-//   $('#quiz').hide()
-//   $('#welcome').show()
-//   deselectRadios()
-//   userScore = 0
-//   currentQuestion = 1
-//   qnNumber = 0
-//   i = 0
-// })
+  function showPlayer(){
+    if (qnNumber % 2 === 0) {
+      (player = 'Player 1 Turn')
+    } else {
+      (player = 'Player 2 Turn')
+    }
+    qnsId.textContent = player
+  }
 })
