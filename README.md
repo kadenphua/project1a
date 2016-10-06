@@ -10,6 +10,10 @@ Player 1 will start first.
 <br>
 Questions are randomised so the sequence will be different for every new game. 
 <br>
+Click start button to start the quiz.
+<br>
+Click next button button to go to the next question.
+<br>
 At the end of the quiz, the scores will be calculated and the game will announce the winner. 
 <br>
 Reference code:
