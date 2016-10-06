@@ -17,7 +17,7 @@ h1{
 
 }
 h3 {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 span {
@@ -26,15 +26,17 @@ span {
 
 #start {
   margin: 20px 0 20px 0;
+  border-radius: 15px;
 }
 
 #next {
   margin: 20px 0 20px 0;
+  border-radius: 15px;
 }
 
-#restart {
-  margin: 20px 0 20px 0;
-}
+/*input[type='radio'] {
+  visibility: hidden;
+}*/
 
 #quiz {
   display: none;

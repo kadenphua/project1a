@@ -31,12 +31,12 @@ $(document).ready(function () {
       answer: 2
     },
     {
-      question: '-5 x 5 =',
+      question: '-5 x 5 = ?',
       choices: ['25', '20', '-25', '-20'],
       answer: 2
     },
     {
-      question: '12 x 12 =',
+      question: '12 x 12 = ?',
       choices: ['12', '108', '240', '144'],
       answer: 3
     },
@@ -56,7 +56,7 @@ $(document).ready(function () {
       answer: 2
     },
     {
-      question: '11^0',
+      question: '11^0 = ?',
       choices: ['1', '11', '121', '12'],
       answer: 0
     },
@@ -79,7 +79,6 @@ $(document).ready(function () {
       // if ($("form input[name=answer]:checked").val() == allQns[i].answer) {
       // Use parseInt to convert string into integer when using ===
       if (parseInt($('form input[name=answer]:checked').val()) === allQns[i].answer) {
-        console.log("check");
         if (qnNumber % 2 === 0) {
           score1++
         } else {
@@ -132,6 +131,10 @@ $(document).ready(function () {
     }
   }
 
+  function scoreFormula(){
+
+  }
+
   function deselectRadios () {
     allRadios = document.getElementsByName('answer')
     for (var p = 0; p < allRadios.length; p++) {
@@ -141,9 +144,9 @@ $(document).ready(function () {
 
   function showPlayer(){
     if (qnNumber % 2 === 0) {
-      (player = 'Player 1 Turn')
+      (player = 'Player 1 Turn: ')
     } else {
-      (player = 'Player 2 Turn')
+      (player = 'Player 2 Turn: ')
     }
     qnsId.textContent = player
   }
