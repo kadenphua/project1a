@@ -88,12 +88,7 @@ $(document).ready(function () {
     }
     else {
       scoreFormula()
-      qnsId.style.display = 'none'
-      question.style.display = 'none'
-      form[0].style.display = 'none'
-      next.style.display = 'none'
-
-      alert('Player 1 score is ' + score1 + ' out of 5.' + 'and ' + 'Player 2 score is ' + score2 + ' out of 5.')
+      alert('Player 1 score is ' + score1 + ' out of 5 ' + 'and ' + 'Player 2 score is ' + score2 + ' out of 5.')
       if (score1 > score2) {
         alert('Player 1 is the winner.')
       } else if (score1 < score2) {
@@ -104,7 +99,7 @@ $(document).ready(function () {
       location.reload()
     }
   })
-
+// Shows the question and choices
   function display () {
     if (qnNumber < 10) {
       i = Math.floor(Math.random() * allQns.length)
