@@ -15,62 +15,51 @@ $(document).ready(function () {
 
   // Create an array to store all questions.
   var allQns = [
-    // Store each question in an object.
-    // allQns[0] =
     {
       question: '1+1 = ?',
       choices: ['11', '2', '4', '0.1'],
       answer: 1
     },
-    // allQns[1] =
     {
       question: '10^2 = ?',
       choices: ['10', '1000', '1', '100'],
       answer: 3
     },
-    // allQns[2] =
     {
       question: '6 x 3 = ?',
       choices: ['2', '12', '18', '24'],
       answer: 2
     },
-    // allQns[3] =
     {
       question: '-5 x 5 =',
       choices: ['25', '20', '-25', '-20'],
       answer: 2
     },
-    // allQns[4] =
     {
       question: '12 x 12 =',
       choices: ['12', '108', '240', '144'],
       answer: 3
     },
-    // allQns[5] =
     {
       question: 'How many sales would a $7.00 book need to make $1,000?',
       choices: ['199', '143', '112', '245'],
       answer: 1
     },
-    // allQns[6] =
     {
       question: 'What is the number if two-thirds of a number is 20 less than the original number?',
       choices: ['100', '50', '60', '70'],
       answer: 2
     },
-    // allQns[7] =
     {
       question: '3 aces are drawn from a deck, what is the probability of drawing the fourth?',
       choices: ['2/50', '3/49', '1/49', '1/52'],
       answer: 2
     },
-    // allQns[8] =
     {
       question: '11^0',
       choices: ['1', '11', '121', '12'],
       answer: 0
     },
-    // allQns[9] =
     {
       question: 'What is the value of x if x(-3) + 6 = -9 ?',
       choices: ['4', '6', '5', '-5'],
@@ -88,19 +77,15 @@ $(document).ready(function () {
   $('#next').click(function () {
     if (qnNumber < 9) {
       // if ($("form input[name=answer]:checked").val() == allQns[i].answer) {
-      // console.log('val is ', $('form input[name=answer]:checked').val(), qnNumber)
       // Use parseInt to convert string into integer when using ===
-      if (parseInt($('form input[name=answer]:checked').val()) === 0) {
+      if (parseInt($('form input[name=answer]:checked').val()) === allQns[i].answer) {
         console.log("check");
         if (qnNumber % 2 === 0) {
           score1++
         } else {
           score2++
         }
-        // console.log("correct")
-      // console.log(userScore)
     }
-    // console.log(score1, score2);
       qnNumber++
       allQns.splice(i, 1)
       deselectRadios()
@@ -108,14 +93,12 @@ $(document).ready(function () {
       showPlayer()
     }
     else {
-      if(parseInt($('form input[name=answer]:checked').val()) === 0) {
+      if(parseInt($('form input[name=answer]:checked').val()) === allQns[i].answer) {
         if (qnNumber % 2 === 0) {
           score1++
         } else {
           score2++
         }
-        // console.log("correct")
-      // console.log(userScore)
     }
       qnsId.style.display = 'none'
       question.style.display = 'none'
