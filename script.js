@@ -116,7 +116,6 @@ $(document).ready(function () {
   }
 
   // if ($("form input[name=answer]:checked").val() == allQns[i].answer) {
-  // Use parseInt to convert string into integer when using ===
   function scoreFormula() {
     if (parseInt($('form input[name=answer]:checked').val()) === allQns[i].answer) {
       if (qnNumber % 2 === 0) {
